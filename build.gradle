@@ -22,6 +22,7 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-webmvc'
 	implementation 'org.mapstruct:mapstruct:1.5.3.Final'
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:+'
 
 	compileOnly 'org.projectlombok:lombok'
 

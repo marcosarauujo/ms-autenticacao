@@ -36,9 +36,17 @@ public class AutenticacaoService {
         Usuario usuarioExistente = usuarioRepositoryPort.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado!"));
 
-        usuarioExistente.setNome(dto.getNome());
-        usuarioExistente.setEmail(dto.getEmail());
-        usuarioExistente.setRole(dto.getRole());
+        usuarioExistente.setNome(
+                (dto.getNome() != null && !dto.getNome().equals("string")) ? dto.getNome() : usuarioExistente.getNome()
+        );
+
+        usuarioExistente.setEmail(
+                (dto.getEmail() != null && !dto.getEmail().equals("string")) ? dto.getEmail() : usuarioExistente.getEmail()
+        );
+
+        usuarioExistente.setRole(
+                dto.getRole() != null ? dto.getRole() : usuarioExistente.getRole()
+        );
 
         return usuarioDtoMapper.paraUsuarioOutDTO(usuarioRepositoryPort.save(usuarioExistente));
     }
